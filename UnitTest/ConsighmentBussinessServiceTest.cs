@@ -9,7 +9,7 @@ namespace UnitTest;
 
 public class ConsighmentServiceTest
 {
-    private readonly ConsighmentService servise;
+    private readonly ConsighmentBussinessService servise;
     private readonly Mock<CommissionService> commissionService;
     private readonly Mock<IPaymentRepository> paymentRepository;
     private readonly Mock<ITransferClient> transferClient;
@@ -19,7 +19,7 @@ public class ConsighmentServiceTest
         commissionService = new Mock<CommissionService>();
         paymentRepository = new Mock<IPaymentRepository>();
         transferClient = new Mock<ITransferClient>();
-        servise = new ConsighmentService(
+        servise = new ConsighmentBussinessService(
             commissionService.Object,
             paymentRepository.Object,
             transferClient.Object);

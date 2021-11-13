@@ -22,4 +22,10 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - 5001:5100
+      - 500:5000
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: abc

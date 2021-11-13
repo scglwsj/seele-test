@@ -9,11 +9,11 @@ namespace UnitTest;
 public class ConsighmentControllerTest
 {
     private readonly ConsighmentController controller;
-    private readonly Mock<ConsighmentService> servise;
+    private readonly Mock<ConsighmentBussinessService> servise;
 
     public ConsighmentControllerTest()
     {
-        servise = new Mock<ConsighmentService>(null, null, null);
+        servise = new Mock<ConsighmentBussinessService>(null, null, null);
         controller = new ConsighmentController(servise.Object);
     }
 
