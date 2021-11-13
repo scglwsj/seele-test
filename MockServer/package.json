@@ -1,0 +1,17 @@
+{
+  "name": "payment-service",
+  "version": "1.0.0",
+  "description": "a mock payment service for consighment servise",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "mock"
+  ],
+  "author": "wsj",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
