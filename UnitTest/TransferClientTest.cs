@@ -12,52 +12,27 @@ using Xunit;
 
 namespace UnitTest;
 
-public class TransferClientTest
+public class TransferClientTest : BaseClientTest
 {
     private const string transferUrl = "http://test/url";
 
     [Fact]
     public void Should_return_success_when_call_payment_ok()
     {
-        TransferClient client = StubResponse(HttpStatusCode.OK, new { success = true });
+        TransferClient client = StubRespnse(HttpStatusCode.OK, new { success = true });
 
         var result = client.Transfer(new Transfer(20, "id 为 1 的拍卖的佣金"));
 
         Assert.True(result.Success);
     }
 
-    protected static TransferClient StubResponse(HttpStatusCode statusCode, object responseBody)
+    private TransferClient StubRespnse(HttpStatusCode statusCode, object responseBody)
     {
-        var httpClientFactoryMock = Substitute.For<IHttpClientFactory>();
-        var fakeHttpMessageHandler = new FakeHttpMessageHandler(new HttpResponseMessage()
-        {
-            StatusCode = statusCode,
-            Content = new StringContent(JsonConvert.SerializeObject(responseBody), Encoding.UTF8, "application/json")
-        });
-
-        var fakeHttpClient = new HttpClient(fakeHttpMessageHandler);
-
-        httpClientFactoryMock.CreateClient().Returns(fakeHttpClient);
+        var httpClientFactoryMock = GetHttpClientFactory(statusCode, responseBody);
 
         var configuration = Substitute.For<IConfiguration>();
         configuration["TransferService:Url"].Returns(transferUrl);
 
         return new TransferClient(httpClientFactoryMock, configuration);
     }
-
-    internal class FakeHttpMessageHandler : DelegatingHandler
-    {
-        private readonly HttpResponseMessage fakeResponse;
-
-        public FakeHttpMessageHandler(HttpResponseMessage responseMessage)
-        {
-            fakeResponse = responseMessage;
-        }
-
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(fakeResponse);
-        }
-    }
 }
-
