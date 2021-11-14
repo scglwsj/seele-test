@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsighmentService", "Consi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{F576480B-930D-4325-95F7-F20A4503D3DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTest", "ApiTest\ApiTest.csproj", "{5CF4BC55-4526-46F0-8B1B-19184A23F842}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F576480B-930D-4325-95F7-F20A4503D3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F576480B-930D-4325-95F7-F20A4503D3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F576480B-930D-4325-95F7-F20A4503D3DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CF4BC55-4526-46F0-8B1B-19184A23F842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF4BC55-4526-46F0-8B1B-19184A23F842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF4BC55-4526-46F0-8B1B-19184A23F842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF4BC55-4526-46F0-8B1B-19184A23F842}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
