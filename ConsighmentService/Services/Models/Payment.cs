@@ -2,14 +2,14 @@
 
 public record class Payment
 {
-    public Payment(string id, DateTime createdAt, decimal amount)
+    public Payment(string consighmentId, DateTime createdAt, decimal amount)
     {
-        Id = id;
+        ConsighmentId = consighmentId;
         CreatedAt = createdAt;
         Amount = amount;
     }
 
-    public string Id { get; init; }
+    public string ConsighmentId { get; init; }
     public DateTime CreatedAt { get; init; }
     public decimal Amount { get; init; }
 }

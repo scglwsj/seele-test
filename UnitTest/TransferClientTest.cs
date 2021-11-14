@@ -1,13 +1,8 @@
 ﻿using ConsighmentService.Clients;
 using ConsighmentService.Services.Models;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using NSubstitute;
 using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace UnitTest;

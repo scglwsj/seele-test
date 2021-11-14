@@ -8,6 +8,7 @@ namespace ConsighmentService.Clients
     {
         private readonly HttpClient httpClient;
 
+
         public TransferClient(IHttpClientFactory httpClient, IConfiguration configuration)
         {
             this.httpClient = httpClient.CreateClient();

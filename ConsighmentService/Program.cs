@@ -2,6 +2,7 @@ using ConsighmentService.Clients;
 using ConsighmentService.Repositories;
 using ConsighmentService.Services;
 using ConsighmentService.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,10 +20,16 @@ builder.Services.AddMvcCore().AddJsonOptions(options =>
     options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
-builder.Services.AddSingleton<ConsighmentBussinessService>();
-builder.Services.AddSingleton<CommissionService>();
-builder.Services.AddSingleton<IPaymentRepository, PaymentRepository>();
-builder.Services.AddSingleton<ITransferClient, TransferClient>();
+builder.Services.AddDbContext<PaymentContext>(options =>
+{
+    var sqlConnectionString = builder.Configuration.GetConnectionString("Default");
+    options.UseNpgsql(sqlConnectionString);
+});
+
+builder.Services.AddScoped<ConsighmentBussinessService>();
+builder.Services.AddScoped<CommissionService>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<ITransferClient, TransferClient>();
 
 var app = builder.Build();
 

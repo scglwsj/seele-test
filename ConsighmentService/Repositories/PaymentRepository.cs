@@ -5,8 +5,17 @@ namespace ConsighmentService.Repositories;
 
 public class PaymentRepository : IPaymentRepository
 {
+    private PaymentContext PaymentContext { get; }
+
+    public PaymentRepository(PaymentContext paymentContext)
+    {
+        PaymentContext = paymentContext;
+    }
+
     public Payment? FindPaymentByConsighmentId(string consighmentId)
     {
-        return new Payment("1", DateTime.Now, 200);
+        using var context = PaymentContext;
+        var result = context.Payments.FirstOrDefault(payment => payment.ConsighmentId == consighmentId);
+        return result?.ToEntity();
     }
 }
